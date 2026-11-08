@@ -389,7 +389,7 @@ function preventOrphans() {
       if (!orphan) return;
       const text = node.textContent;
       const at = text.lastIndexOf(orphan.trim());
-      if (at <= 0) return;
+      if (at <= 0 || !/\s/.test(text[at - 1])) return;
       let space = at - 1;
       while (space >= 0 && /\s/.test(text[space])) space -= 1;
       space += 1;
